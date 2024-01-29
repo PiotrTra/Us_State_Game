@@ -27,10 +27,8 @@ while len(guessed_states) < 50:
 
     #Write Exit to leave game and write missing states you have to learn
     if answer_state == "Exit":
-        missing_states = []
-        for state in list_of_states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        #Using List Comprehension creating list of missing states
+        missing_states = [state for state in list_of_states if state not in guessed_states]
         #Creating DataFrame with pandas
         new_data = pandas.DataFrame(missing_states)
         new_data.to_csv("states_to_learn.csv")
